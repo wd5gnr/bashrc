@@ -1,0 +1,11 @@
+# comments like this and blank lines are ignored
+# You'll want to remove this and put your own
+# sync files in
+# common examples would be:
+# input.rc
+# .emacs.d/lisp
+# .emacs.d/init.el
+
+BASHD_EXAMPLE_SYNC_FILE
+
+
