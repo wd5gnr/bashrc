@@ -1,15 +1,12 @@
-
-
-
-#Bash Startup Scripts
+# Bash Startup Scripts
 The purpose of this is to organize your .bashrc scripts and sync them between machines. This started out fairly simple, but now can also handle your .profile and keep things synchronized between machines like .inputrc, emacs start up files, etc.
 
-##How to Use
+## How to Use
 There are basically three parts to installing this setup. First, you have to wire the ~/.bash.d/bashrc script as a sourced element in your .bashrc or .bash_profile. You can create a symlink, cut and paste, or add a source line to your existing script (see step 1 below). Then you can create files that execute at bash startup. You can control the order they run in and you can also create scripts that only run for certain hosts, certain operating systems, and certain kinds of bash shells (interactive/non-interactive). Ideally, you'd remove all the content from your existing bash startup files and move that content here, leaving the startup files nearly empty except for the code in bashrc.
 
 If you don't want to synchronize, that's the only two steps you need. However, if you want to you can synchronize the directory with git, rsync, rclone, dropbox, etc. These instructions assume git which is nice because it resolves conflicts and gives you revision history.
 
-##Step-by-Step
+## Step-by-Step
 1. Use bashrc as your ~/.bashrc or add: source ~/.bash.d/bashrc to the end of your .bashrc. You can also use this in .bash_profile if you want to get rid of .bashrc all together. One easy thing to do is make .bashrc or .bash_profile a
 symlink to ~/.bash.d/bashrc
 
@@ -30,7 +27,7 @@ symlink to ~/.bash.d/bashrc
 9. Place other files you want to sync in the sync directory (for example, .emacs). You can create symlinks to them in the local file systems If you add them to the check.sh script and have the locations parallel
 (that is, ~/foo/bar/config.txt => ~/.bash.d/sync/foo/bar/config.txt) then the check.sh script can ensure the links are installed.
 
-##Interactive vs Non-interactive
+## Interactive vs Non-interactive
 Because .bashrc usually exits for non-interactive shells, all of the above only occurs for interactive shells. However, if you ensure that bashrc is sourced for all bash shells (e.g., replace .bash_profile or take out the interactive check that makes .bashrc only for interactive shells) you can place similar scripts in the profile subdirectories. These occur first and will run for all shells, not just interactive ones.
 
 In other words, if bashrc runs for all shells the order is:
@@ -91,7 +88,7 @@ The output of running check.sh should look like this:
        
 The script only creates links if they don't exist and will rename any previous file to have a .backup extension.
 
-##Note about Scripts
+## Note about Scripts
 NOTE: The .sh files are NOT proper shell scripts. They are sourced. You do not need to start them with #!/bin/bash (although you can) and they do not need to have executable permissions.
 
 
