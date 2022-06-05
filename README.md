@@ -88,8 +88,12 @@ The output of running check.sh should look like this:
        
 The script only creates links if they don't exist and will rename any previous file to have a .backup extension.
 
+*Update* I have quit using the git sync and instead have Syncthing keep the ~/.bash.d folder in sync across machines. Either way works, but if you do that, you can modify the scripts to not to a git pull on startup.
+
 ## Note about Scripts
 NOTE: The .sh files are NOT proper shell scripts. They are sourced. You do not need to start them with #!/bin/bash (although you can) and they do not need to have executable permissions.
+
+One byproduct of this is that you should NOT set traps in the scripts. If you must (and, yes, sometimes you must), you should either reset the trap when done or run in a subshell (that is  ( trap .... ; xxx .... )
 
 
 ----------
